@@ -6,9 +6,14 @@ inputs:
     description: 'Text to display'
     required: false
     default: 'Hello World'
+outputs:
+  time:
+    description: 'Time needed'
 runs:
   using: 'docker'
-  image: 'docker://ubuntu'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.text }}
 branding:
   icon: sun
   color: blue
