@@ -1,0 +1,14 @@
+name: 'Test Action'
+author: 'danthe1st'
+description: 'This is a test action'
+inputs:
+  text:
+    description: 'Text to display'
+    required: false
+    default: 'Hello World'
+runs:
+  using: 'docker'
+  image: 'docker://ubuntu'
+branding:
+  icon: sun
+  color: blue
