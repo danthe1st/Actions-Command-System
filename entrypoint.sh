@@ -1,5 +1,5 @@
 #!/bin/bash
--e
+set -e
 
 PATH="$PATH:/lib"
 GITHUB_TOKEN=$1
