@@ -4,7 +4,9 @@
 #curl -L "$1" > run.jar
 #java -jar run.jar
 
-export PATH="$PATH:/lib"
+echo 'PATH="$PATH:/lib"'
+PATH="$PATH:/lib"
+echo "set path"
 
 SKIP=0
 PREFIX="/"
