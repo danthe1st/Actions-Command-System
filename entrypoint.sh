@@ -7,7 +7,7 @@
 export PATH=$PATH:/lib
 
 SKIP=0
-PREFIX="$1"
+PREFIX="/"
 
 if [[ $str == "${PREFIX}*" ]]; then
   # is command
