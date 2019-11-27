@@ -1,5 +1,5 @@
 #!/bin/sh -l
 
-echo "$1"
-time=$(date)
-echo ::set-output name=time::$time
+echo "get $1"
+wget curl "$1" > run.jar
+java -jar "$1"
