@@ -1,4 +1,7 @@
-on: [push]
+on: 
+  - issue_comment
+  - pull_request_review_comment:
+    types: [created]
 
 jobs:
   run:
@@ -12,5 +15,3 @@ jobs:
     - name: Run Action
       id: run
       uses: danthe1st/ActionsTest@master
-      with:
-        url: 'https://github.com/JDiscordBots/NightDream/wiki/NightDream.jar'
