@@ -5,12 +5,12 @@
 #java -jar run.jar
 
 echo 'setting PATH'
-#PATH="$PATH:/lib"
-echo "set path to $PATH"
+PATH="$PATH:/lib"
+echo "set PATH to $PATH"
 
 SKIP=0
 PREFIX="/"
-
+echo "if"
 if [[ $str == ${PREFIX}* ]]; then
   # is command
   echo "this is a command"
