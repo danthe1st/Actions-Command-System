@@ -1,15 +1,14 @@
 #!/bin/bash
 BASE_URI=https://api.github.com
 API_HEADER="Accept: application/vnd.github.v3+json"
-AUTH_HEADER="Authorization: token $GITHUB_TOKEN"
 
 method=POST
 
 
 issueNum=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
-path="/repos/$REPO_FULLNAME/issues/${issueNum}/comments"
+path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
 msg="test message"
 body="{\"body\": \"$msg\"}"
 
+echo "curl -X $method -s -u x-access-token:$GITHUB_TOKEN -H \"${API_HEADER}\" \"${BASE_URI}/${path}\" --data $body"
 curl -X $method -s -u x-access-token:$GITHUB_TOKEN -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
-#curl -X $method -s -H "${AUTH_HEADER}" -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
