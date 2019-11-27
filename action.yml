@@ -2,18 +2,14 @@ name: 'Test Action'
 author: 'danthe1st'
 description: 'This is a test action'
 inputs:
-  text:
-    description: 'Text to display'
-    required: false
-    default: 'Hello World'
-outputs:
-  time:
-    description: 'Time needed'
+  url:
+    description: 'URL of the JAR file (will be downloaded)'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.text }}
+    - ${{ inputs.url }}
 branding:
   icon: sun
   color: blue
