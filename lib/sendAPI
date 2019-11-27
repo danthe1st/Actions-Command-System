@@ -1,12 +1,11 @@
 #!/bin/bash
 BASE_URI=https://api.github.com
 API_HEADER="Accept: application/vnd.github.v3+json"
-BASE_REPO=$(echo "$pr_resp" | jq -r .base.repo.full_name)
 
 method=POST
 
 issueNum=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
-path="repos/$BASE_REPO/issues/${issueNum}/comments"
+path="repos/$GITHUB_REPOSITORY/issues/${issueNum}/comments"
 msg="test message"
 body="{\"body\": \"$msg\"}"
 
