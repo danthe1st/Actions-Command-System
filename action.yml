@@ -3,9 +3,9 @@ author: 'danthe1st'
 description: 'This is a test action'
 inputs:
   gh-token:
-    description: 'The GitHub token'
+    description: 'Gh token'
     required: true
-    default: no-token
+    #default: no-token
 runs:
   using: 'docker'
   image: 'Dockerfile'
