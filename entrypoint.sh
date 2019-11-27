@@ -9,7 +9,7 @@ export PATH=$PATH:/lib
 SKIP=0
 PREFIX="/"
 
-if [[ $str == "${PREFIX}*" ]]; then
+if [[ $str == ${PREFIX}* ]]; then
   # is command
   echo "this is a command"
   sendAPI
