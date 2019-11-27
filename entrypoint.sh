@@ -4,9 +4,9 @@
 #curl -L "$1" > run.jar
 #java -jar run.jar
 
-echo 'PATH="$PATH:/lib"'
-PATH="$PATH:/lib"
-echo "set path"
+echo 'setting PATH'
+#PATH="$PATH:/lib"
+echo "set path to $PATH"
 
 SKIP=0
 PREFIX="/"
