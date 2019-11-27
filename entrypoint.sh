@@ -3,12 +3,12 @@
 PATH="$PATH:/lib"
 
 SKIP=0
-PREFIX="/"
+prefix="/"
 
 text=`jq -r ".comment.body" "$GITHUB_EVENT_PATH"`
 
-echo "$text"
-if [[ $text == ${PREFIX}* ]]; then
+echo "does $text start with $prefix ?"
+if [[ $text == ${prefix}* ]]; then
   # is command
   echo "this is a command"
   sendAPI
