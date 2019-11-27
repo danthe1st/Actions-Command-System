@@ -9,7 +9,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - 'https://github.com/JDiscordBots/NightDream/wiki/NightDream.jar'
     - ${{ inputs.url }}
 branding:
   icon: sun
