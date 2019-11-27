@@ -4,9 +4,9 @@ API_HEADER="Accept: application/vnd.github.v3+json"
 
 method=POST
 
-echo $GITHUB_EVENT_PATH
 issueNum=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
 echo $issueNum
+echo path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
 path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
 msg="test message"
 body="{\"body\": \"$msg\"}"
