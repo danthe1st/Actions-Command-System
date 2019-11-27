@@ -17,4 +17,4 @@ jobs:
       id: run
       uses: danthe1st/ActionsTest@master
       with:
-        token: '${{ secrets.GITHUB_TOKEN }}'
+        gh-token: 'this should be the token'

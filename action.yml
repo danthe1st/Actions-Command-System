@@ -2,7 +2,7 @@ name: 'Test Action'
 author: 'danthe1st'
 description: 'This is a test action'
 inputs:
-  token:
+  gh-token:
     description: 'The GitHub token'
     required: true
     default: no-token
@@ -10,7 +10,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.token }}
+    - ${{ inputs.gh-token }}
 branding:
   icon: sun
   color: blue
