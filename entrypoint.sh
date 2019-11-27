@@ -1,7 +1,8 @@
 #!/bin/bash
 
 PATH="$PATH:/lib"
-
+GITHUB_TOKEN=$1
+echo $GITHUB_TOKEN
 SKIP=0
 prefix="/"
 

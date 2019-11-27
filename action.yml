@@ -2,12 +2,15 @@ name: 'Test Action'
 author: 'danthe1st'
 description: 'This is a test action'
 inputs:
-  url:
-    description: 'URL of the JAR file (will be downloaded)'
+  token:
+    description: 'The GitHub token'
     required: true
+    default: no-token
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.token }}
 branding:
   icon: sun
   color: blue
