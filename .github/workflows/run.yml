@@ -16,3 +16,5 @@ jobs:
     - name: Run Action
       id: run
       uses: danthe1st/ActionsTest@master
+      env:
+        - GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
