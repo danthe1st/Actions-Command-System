@@ -1,8 +1,14 @@
 #!/bin/bash
+-e
 
 PATH="$PATH:/lib"
 GITHUB_TOKEN=$1
-echo $GITHUB_TOKEN
+
+if [[ -z "$GITHUB_TOKEN" ]]; then
+	echo "No token entered" >/dev/stderr
+	exit -1
+fi
+
 SKIP=0
 prefix="/"
 
