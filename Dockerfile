@@ -2,7 +2,7 @@
 FROM openjdk:8-jre-alpine
 
 # install everything needed
-RUN apk add curl 
+RUN apk --no-cache add curl jq 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
