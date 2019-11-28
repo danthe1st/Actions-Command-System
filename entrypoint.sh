@@ -2,7 +2,7 @@
 set -e
 
 PATH="$PATH:/lib"
-GITHUB_TOKEN=$1
+export GITHUB_TOKEN=$1
 
 if [[ -z "$GITHUB_TOKEN" ]]; then
 	echo "No token entered" >/dev/stderr
