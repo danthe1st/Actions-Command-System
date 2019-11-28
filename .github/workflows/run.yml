@@ -16,6 +16,6 @@ jobs:
     - name: Run Action
       uses: danthe1st/ActionsTest@master
       env:
-        token: 'this should be the token'
+        token: '${{ secrets.GITHUB_TOKEN }}'
     - name: "test output"
       run: echo test
