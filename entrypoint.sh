@@ -28,6 +28,7 @@ if [[ $text == ${prefix}* ]]; then
   else
 	echo "command not existant or executable" >/dev/stderr
 	exit -1
+  fi
 else
   echo "$text is no command - skipping"
   exit $SKIP
