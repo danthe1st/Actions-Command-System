@@ -8,7 +8,7 @@ AGENT_HEADER="User-Agent: Actions-$REPO_FULLNAME"
 echo $REPO_FULLNAME
 
 method="$1"
-
+path="$2"
 body="$3"
 
 
