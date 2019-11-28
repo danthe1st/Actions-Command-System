@@ -3,6 +3,7 @@ set -e
 BASE_URI=https://api.github.com
 API_HEADER="Accept: application/vnd.github.v3+json"
 REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
+AGENT_HEADER="User-Agent: Actions-$REPO_FULLNAME"
 
 echo $REPO_FULLNAME
 
@@ -14,4 +15,4 @@ msg="test message"
 body="{\"body\": \"$msg\"}"
 
 #echo "curl -X $method -s -u x-access-token:$GITHUB_TOKEN -H \"${API_HEADER}\" \"${BASE_URI}/${path}\" --data $body"
-curl -i -X $method -s -u x-access-token:$GITHUB_TOKEN -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
+curl -i -X $method -s -u x-access-token:$GITHUB_TOKEN -H "${AGENT_HEADER}" -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
