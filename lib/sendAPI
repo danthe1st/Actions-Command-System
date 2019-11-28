@@ -2,7 +2,7 @@
 set -e
 BASE_URI=https://api.github.com
 API_HEADER="Accept: application/vnd.github.v3+json"
-AUTH_HEADER="authorization: token $GITHUB_TOKEN"
+AUTH_HEADER="authorization: Bearer $GITHUB_TOKEN"
 REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
 AGENT_HEADER="User-Agent: Actions-$REPO_FULLNAME"
 
