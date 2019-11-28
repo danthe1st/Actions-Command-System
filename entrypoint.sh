@@ -19,9 +19,9 @@ if [[ $text == ${prefix}* ]]; then
   # is command
   echo "$text is a command"
   text="${text:$prefixLen}"
-  cmdName="`cut -d' ' -f1`"
+  cmdName="`echo $text|cut -d' ' -f1`"
   cmdName="`echo $cmdName|sed 's/[^a-zA-Z0-9]//g'`"
-  args="`cut -d' ' -f2-`"
+  args="`echo $text|cut -d' ' -f2-`"
   echo "executing command $cmdName with arguents $args"
   if [ -x "/commands/$cmdName" ]; then
   	bash -c "/commands/$cmdName $args" && echo "executed command successfully" || echo "command errored with exit code $?"
