@@ -9,7 +9,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.gh-token }}
+    - ${{ secrets.GITHUB_TOKEN }}
 branding:
   icon: sun
   color: blue
