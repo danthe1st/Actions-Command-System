@@ -23,7 +23,7 @@ if [[ $text == ${prefix}* ]]; then
   cmdName="`echo $cmdName|sed 's/[^a-zA-Z0-9]//g'`"
   args="`cut -d' ' -f2-`"
   echo "executing command $cmdName with arguents $args"
-  if [-x "/commands/$cmdName" ]; then
+  if [ -x "/commands/$cmdName" ]; then
   	bash -c "/commands/$cmdName $args" && echo "executed command successfully" || echo "command errored with exit code $?"
   else
 	echo "command not existant or executable" >/dev/stderr
