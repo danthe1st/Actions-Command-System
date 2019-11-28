@@ -12,4 +12,4 @@ path="$2"
 body="$3"
 
 echo "sending a $1 request to $path with the following body: $body"
-#curl -X "$method" -s -H "${AUTH_HEADER}" -H "${AGENT_HEADER}" -H "${API_HEADER}" --data "$body" "${BASE_URI}/${path}"
+curl -X "$method" -s -H "${AUTH_HEADER}" -H "${AGENT_HEADER}" -H "${API_HEADER}" --data "$body" "${BASE_URI}/${path}"
