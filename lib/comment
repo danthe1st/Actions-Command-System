@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
+
+msg="$*"
+if [[ -z "$msg" ]]; then
+	echo "no message provided" >/dev/stderr
+	exit -1
+fi
+
+
+# TODO PR/commit commands
+issueNum=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
+path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
+# TODO escape msg or something like that, jq?
+body={\"body\": \"$msg\"}
+method="POST"
+
+sendAPI "$method" "$path" "$body"
