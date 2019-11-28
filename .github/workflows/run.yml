@@ -14,7 +14,3 @@ jobs:
     - uses: ./
       with:
         token: '${{ secrets.GITHUB_TOKEN }}'
-    - name: Run Action
-      uses: danthe1st/ActionsTest@master
-      with:
-        token: '${{ secrets.GITHUB_TOKEN }}'
