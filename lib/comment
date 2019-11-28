@@ -14,7 +14,7 @@ fi
 issueNum=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
 path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
 # TODO escape msg or something like that, jq?
-body={\"body\": \"$msg\"}
+body="{\"body\": \"$msg\"}"
 method="POST"
 
 sendAPI "$method" "$path" "$body"

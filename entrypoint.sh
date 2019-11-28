@@ -25,7 +25,7 @@ if [[ $text == ${prefix}* ]]; then
   echo "executing command $cmdName with arguments $args"
   ls -l /commands
   if [ -x "/commands/$cmdName" ]; then
-	bash -c "/commands/$cmdName $args" && echo "executed command successfully" || echo "command errored with exit code $?"
+	bash -c "/commands/$cmdName $args" && echo "executed command successfully" || ( echo "command errored with exit code $?" && exit $? )
   else
 	echo "command not existant or executable" >/dev/stderr
 	exit -1
