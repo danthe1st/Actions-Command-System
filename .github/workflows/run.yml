@@ -12,9 +12,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - uses: ./
-      env:
+      with:
         token: '${{ secrets.GITHUB_TOKEN }}'
     - name: Run Action
       uses: danthe1st/ActionsTest@master
-      env:
+      with:
         token: '${{ secrets.GITHUB_TOKEN }}'
