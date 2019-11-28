@@ -16,4 +16,4 @@ msg="test message"
 body="{\"body\": \"$msg\"}"
 
 #echo curl -i -X $method -s -H ${AUTH_HEADER} -H "${AGENT_HEADER}" -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
-curl -i -X $method -s -u -H ${AUTH_HEADER} -H "${AGENT_HEADER}" -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
+curl -i -X $method -s -H ${AUTH_HEADER} -H "${AGENT_HEADER}" -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
