@@ -13,5 +13,5 @@ path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
 msg="test message"
 body="{\"body\": \"$msg\"}"
 
-echo "curl -X $method -s -u x-access-token:$GITHUB_TOKEN -H \"${API_HEADER}\" \"${BASE_URI}/${path}\" --data $body"
+#echo "curl -X $method -s -u x-access-token:$GITHUB_TOKEN -H \"${API_HEADER}\" \"${BASE_URI}/${path}\" --data $body"
 curl -X $method -s -u x-access-token:$GITHUB_TOKEN -H "${API_HEADER}" "${BASE_URI}/${path}" --data $body
