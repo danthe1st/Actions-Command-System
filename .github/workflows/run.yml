@@ -16,4 +16,6 @@ jobs:
     - name: Run Action
       uses: danthe1st/ActionsTest@master
       with:
-        gh-token: 'this should be the token'
+        token: 'this should be the token'
+    - name: "test output"
+      run: echo test
