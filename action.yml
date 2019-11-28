@@ -9,7 +9,8 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.token }}
+    - $token
+#    - ${{ inputs.token }}
 branding:
   icon: sun
   color: blue
