@@ -6,4 +6,4 @@ if [[ -z "$*" ]]; then
 fi
 # TODO escape msg or something like that, jq?
 body="{\"body\": \"$1\"}"
-comment "$*" POST
+comment "$*" POST "" "get-issue"
