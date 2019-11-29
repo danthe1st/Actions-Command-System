@@ -1,5 +1,5 @@
 #!/bin/bash
--e
+set -e
 if [[ -z "$*" ]]; then
 	echo "no message provided" >/dev/stderr
 	exit -1
