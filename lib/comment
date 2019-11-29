@@ -15,7 +15,7 @@ commentId="$3"
 
 # TODO PR/commit commands
 issueNum="$4"
-path="repos/$REPO_FULLNAME/issues/"
+path="repos/$REPO_FULLNAME/issues"
 if [ -n "$issueNum" ]; then
 	if [[ "$issueNum" =~ ^[^0-9]+$ ]]; then
 		issueNum=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
