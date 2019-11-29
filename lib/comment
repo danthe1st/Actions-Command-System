@@ -2,19 +2,24 @@
 set -e
 
 REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
-
-msg="$*"
+method="$2"
+if [ -z "$method" ]; then
+	method="POST"
+fi
+msg="$1"
 if [[ -z "$msg" ]]; then
 	echo "no message provided" >/dev/stderr
 	exit -1
 fi
-
+commentId="$3"
 
 # TODO PR/commit commands
 issueNum=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
 path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
+if [ -n "$commentId" ]; then
+	path="$path/$commentId"
+fi
 # TODO escape msg or something like that, jq?
 body="{\"body\": \"$msg\"}"
-method="POST"
 
 sendAPI "$method" "$path" "$body"
