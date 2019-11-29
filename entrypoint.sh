@@ -23,7 +23,6 @@ if [[ $text == ${prefix}* ]]; then
   cmdName="`echo $cmdName|sed 's/[^a-zA-Z0-9]//g'`"|| ( echo "err stripping name" &&exit $?)
   args="`echo $text|cut -d' ' -f2-`"|| ( echo "err getting args" &&exit $?)
   echo "executing command $cmdName with arguments $args"
-  ls -l /commands
   if [ -x "/commands/$cmdName" ]; then
 	bash -c "/commands/$cmdName $args" && echo "executed command successfully" || ( echo "command errored with exit code $?" && exit $? )
   else

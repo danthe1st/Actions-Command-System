@@ -7,10 +7,10 @@ if [ -z "$method" ]; then
 	method="POST"
 fi
 msg="$1"
-if [[ -z "$msg" ]]; then
-	echo "no message provided" >/dev/stderr
-	exit -1
-fi
+#if [[ -z "$msg" ]]; then
+#	echo "no message provided" >/dev/stderr
+#	exit -1
+#fi
 commentId="$3"
 
 # TODO PR/commit commands
