@@ -4,4 +4,6 @@ if [[ -z "$*" ]]; then
 	echo "no message provided" >/dev/stderr
 	exit -1
 fi
+# TODO escape msg or something like that, jq?
+body="{\"body\": \"$1\"}"
 comment "$*" POST

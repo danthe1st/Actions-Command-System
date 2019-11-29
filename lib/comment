@@ -6,7 +6,7 @@ method="$2"
 if [ -z "$method" ]; then
 	method="POST"
 fi
-msg="$1"
+body="$1"
 #if [[ -z "$msg" ]]; then
 #	echo "no message provided" >/dev/stderr
 #	exit -1
@@ -19,7 +19,4 @@ path="repos/$REPO_FULLNAME/issues/${issueNum}/comments"
 if [ -n "$commentId" ]; then
 	path="$path/$commentId"
 fi
-# TODO escape msg or something like that, jq?
-body="{\"body\": \"$msg\"}"
-
 sendAPI "$method" "$path" "$body"
