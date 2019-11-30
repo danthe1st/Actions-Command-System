@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-
+perm 3
 comment "" "DELETE" "$1"

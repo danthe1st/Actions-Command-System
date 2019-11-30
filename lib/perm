@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+user="$1"
+req="$2"
+perm=`sendAPI GET repos/$REPO_FULLNAME/collaborators/$user/permission | jq -r ".permission"`
+echo "$perm"
+case "$perm" in
+	admin)
+		lv=3
+		;;
+	write)
+		lv=2
+		;;
+	read)
+		lv=1
+		;;
+	none)
+		lv=0
+		;;
+	*)
+		lv=-1
+		;;
+esac
+if [ -z "$req" ]; then
+	exit "$lv"
+fi
+if [ "$req" -ge "$lv" ] ; then
+	exit 0
+fi
+exit -1

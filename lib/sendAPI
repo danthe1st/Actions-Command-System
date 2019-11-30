@@ -5,8 +5,6 @@ API_HEADER="Accept: application/vnd.github.v3+json"
 AUTH_HEADER="authorization: token $GITHUB_TOKEN"
 AGENT_HEADER="User-Agent: Actions-$REPO_FULLNAME"
 
-echo $REPO_FULLNAME
-
 method="$1"
 path="$2"
 body="$3"
