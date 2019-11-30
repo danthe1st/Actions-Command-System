@@ -2,7 +2,8 @@
 set -e
 user="$1"
 req="$2"
-perm=`sendAPI GET repos/$REPO_FULLNAME/collaborators/$user/permission | jq -r ".permission"`
+perm="`sendAPI GET repos/$REPO_FULLNAME/collaborators/$user/permission`"
+perm="`echo $perm | jq -r \".permission\"`"
 echo "$perm"
 case "$perm" in
 	admin)

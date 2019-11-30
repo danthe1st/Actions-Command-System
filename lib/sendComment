@@ -5,6 +5,6 @@ if [[ -z "$*" ]]; then
 	exit -1
 fi
 # TODO escape msg or something like that, jq?
-msg="${*@Q}"
+msg="`printf '%s' \"$*\"`"
 body="{\"body\": \"$msg\"}"
 comment "$body" POST "" "get-issue"
