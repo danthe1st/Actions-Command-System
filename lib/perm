@@ -25,7 +25,7 @@ esac
 if [ -z "$req" ]; then
 	exit "$lv"
 fi
-if [ "$req" -ge "$lv" ] ; then
+if [ "$lv" -ge "$req" ] ; then
 	exit 0
 fi
 exit -1
