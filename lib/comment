@@ -18,7 +18,7 @@ issueNum="$4"
 path="repos/$REPO_FULLNAME/$API_PATH"
 if [ -n "$issueNum" ]; then
 	if [[ "$issueNum" =~ ^[^0-9]+$ ]]; then
-		issueNum=$(jq -r ".$GH_EVENT_PATH.number" "$GITHUB_EVENT_PATH")
+		issueNum=$(jq -r "$GH_EVENT_PATH.number" "$GITHUB_EVENT_PATH")
 	fi
 	path="$path/${issueNum}"
 fi
