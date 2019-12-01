@@ -16,23 +16,23 @@ prefix="/"
 prefixLen=1
 
 text=`jq -r ".comment.body" "$GITHUB_EVENT_PATH"`
-
-
+author=`jq -r ".comment.author" "$GITHUB_EVENT_PATH"`
+echo "$author" > /dev/stderr
 if [[ $text == ${prefix}* ]]; then
   # is command
-  echo "$text is a command"
+  echo "$text is a command" >/dev/stderr
   text="${text:$prefixLen}"|| ( echo "err stripping prefix" &&exit $?)
   cmdName="`echo $text|cut -d' ' -f1`"|| ( echo "err getting name" &&exit $?)
   cmdName="`echo $cmdName|sed 's/[^a-zA-Z0-9]//g'`"|| ( echo "err stripping name" &&exit $?)
   args="`echo $text|cut -d' ' -f2-`"|| ( echo "err getting args" &&exit $?)
-  echo "executing command $cmdName with arguments $args"
+  echo "executing command $cmdName with arguments $args" >/dev/stderr
   if [ -x "/commands/$cmdName" ]; then
-	bash -c "/commands/$cmdName $args" && echo "executed command successfully" || ( echo "command errored with exit code $?" && exit $? )
+	bash -c "/commands/$cmdName $args" && echo "executed command successfully" >/dev/stderr || ( echo "command errored with exit code $?" >/dev/stderr && exit $? )
   else
 	echo "command not existant or executable" >/dev/stderr
 	exit -1
   fi
 else
-  echo "$text is no command - skipping"
+  echo "$text is no command - skipping">/dev/stderr
   exit $SKIP
 fi
