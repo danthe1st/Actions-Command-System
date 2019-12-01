@@ -4,7 +4,7 @@ set -e
 PATH="$PATH:/lib"
 export GITHUB_TOKEN=$1
 export REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
-
+export MESSAGE_AUTHOR=`jq -r ".comment.user.login" "$GITHUB_EVENT_PATH"`
 
 if [[ -z "$GITHUB_TOKEN" ]]; then
 	echo "No token entered" >/dev/stderr
@@ -16,8 +16,8 @@ prefix="/"
 prefixLen=1
 
 text=`jq -r ".comment.body" "$GITHUB_EVENT_PATH"`
-author=`jq -r ".comment.user.login" "$GITHUB_EVENT_PATH"`
-echo "$author" > /dev/stderr
+
+echo "author: $MESSAGE_AUTHOR" > /dev/stderr
 if [[ $text == ${prefix}* ]]; then
   # is command
   echo "$text is a command" >/dev/stderr

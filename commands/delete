@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-if perm "$author" 3;then
+if perm "$MESSAGE_AUTHOR" 3;then
 	comment "" "DELETE" "$1"
 else
 	sendComment "Missing Permissions"
