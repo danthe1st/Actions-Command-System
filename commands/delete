@@ -1,4 +1,7 @@
 #!/bin/bash
 set -e
-perm 3
-comment "" "DELETE" "$1"
+if perm 3;then
+	comment "" "DELETE" "$1"
+else
+	sendCommand "Missing Permissions"
+fi
