@@ -3,5 +3,5 @@ set -e
 if perm "$author" 3;then
 	comment "" "DELETE" "$1"
 else
-	sendCommand "Missing Permissions"
+	sendComment "Missing Permissions"
 fi
