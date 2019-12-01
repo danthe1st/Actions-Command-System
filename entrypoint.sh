@@ -16,7 +16,7 @@ prefix="/"
 prefixLen=1
 
 text=`jq -r ".comment.body" "$GITHUB_EVENT_PATH"`
-author=`jq -r ".comment.author" "$GITHUB_EVENT_PATH"`
+author=`jq -r ".comment.user.login" "$GITHUB_EVENT_PATH"`
 echo "$author" > /dev/stderr
 if [[ $text == ${prefix}* ]]; then
   # is command
