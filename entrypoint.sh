@@ -10,7 +10,7 @@ export MESSAGE_AUTHOR=`jq -r ".comment.user.login" "$GITHUB_EVENT_PATH"`
 if [ "`jq -r ".issue" \"$GITHUB_EVENT_PATH\"`" != "null" ];then
 	GH_EVENT_PATH=".issue"
 	API_PATH="issues"
-else if [ "`jq -r ".pull_request" \"$GITHUB_EVENT_PATH\"`" != "null" ] ;then
+elif [ "`jq -r ".pull_request" \"$GITHUB_EVENT_PATH\"`" != "null" ] ;then
 	GH_EVENT_PATH="pull_request"
 	API_PATH="pulls"
 else #TODO commit comments
