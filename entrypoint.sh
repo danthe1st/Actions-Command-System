@@ -6,6 +6,20 @@ export GITHUB_TOKEN=$1
 export REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
 export MESSAGE_AUTHOR=`jq -r ".comment.user.login" "$GITHUB_EVENT_PATH"`
 
+
+if [ "`jq -r ".issue" \"$GITHUB_EVENT_PATH\"`" != "null" ];then
+	GH_EVENT_PATH=".issue"
+	API_PATH="issues"
+else if [ "`jq -r ".pull_request" \"$GITHUB_EVENT_PATH\"`" != "null" ] ;then
+	GH_EVENT_PATH="pull_request"
+	API_PATH="pulls"
+else #TODO commit comments
+	echo "unsupported event">/dev/stderr
+	exit -1
+fi
+export GH_EVENT_PATH
+export API_PATH
+
 if [[ -z "$GITHUB_TOKEN" ]]; then
 	echo "No token entered" >/dev/stderr
 	exit -1
