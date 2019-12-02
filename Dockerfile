@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM openjdk:8-jre-alpine
+FROM alpine:3.10
 
 # install everything needed
 RUN apk --no-cache add bash curl jq 
