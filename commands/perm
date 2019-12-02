@@ -1,7 +1,7 @@
 #!/bin/bash
 
 user="$1"
-perm="`perm $user`"
+perm="$(perm $user)"
 lv="$?"
 
 sendComment "Permission Level of user \"$user\": $lv, Permission name: \"$perm\""

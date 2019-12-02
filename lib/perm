@@ -2,8 +2,8 @@
 set -e
 user="$1"
 req="$2"
-perm="`sendAPI GET repos/$REPO_FULLNAME/collaborators/$user/permission`"
-perm="`echo $perm | jq -r \".permission\"`"
+perm="$(sendAPI GET "repos/$REPO_FULLNAME/collaborators/$user/permission")"
+perm="$(echo "$perm" | jq -r ".permission")"
 echo "$perm"
 case "$perm" in
 	admin)
@@ -19,7 +19,7 @@ case "$perm" in
 		lv=0
 		;;
 	*)
-		lv=-1
+		lv=0
 		;;
 esac
 if [ -z "$req" ]; then
@@ -28,4 +28,4 @@ fi
 if [ "$lv" -ge "$req" ] ; then
 	exit 0
 fi
-exit -1
+exit 1
