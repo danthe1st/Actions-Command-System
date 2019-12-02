@@ -26,4 +26,5 @@ jobs:
 After adding this file, create an issue, write `/say Hi!` in a comment there and wait a minute.
 
 You should get response containing `Hi!`.
+
 ![screenshot](https://raw.githubusercontent.com/danthe1st/Actions-Command-System/master/.github/resc/Hi.png)
