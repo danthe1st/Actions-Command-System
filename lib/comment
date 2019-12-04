@@ -13,7 +13,6 @@ body="$1"
 #fi
 commentId="$3"
 
-# TODO PR/commit commands
 issueNum="$4"
 path="repos/$REPO_FULLNAME/$API_PATH"
 if [ -n "$issueNum" ]; then

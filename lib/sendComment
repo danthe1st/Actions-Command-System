@@ -6,4 +6,4 @@ if [[ -z "$*" ]]; then
 fi
 msg=${*//\"/\\\"}
 body="{\"body\": \"$msg\"}"
-comment "$body" POST "" "get-issue"
+comment "$body" POST "" "get-num"

@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+if ! [[ $yournumber =~ '^[0-9]+$' ]] ; then
+	sendComment "Syntax Error: first arg needs to be a number"
+fi
+
+if perm "$MESSAGE_AUTHOR" 3;then
+	ids="$( comment "" "GET" "" "get-num" )"
+	len="$(echo "$ids"|jq ". | length")"
+
+
+	first=$((len - $1))
+	last=$((len + 1))
+	
+	ids="$(echo "$ids"|jq ".[$first:$last][].id")"	
+
+
+	echo "$ids" |jq ".[].id" | while read id; do 
+		comment "" "DELETE" "$id"
+	done
+else
+	sendComment "Missing Permissions"
+fi
