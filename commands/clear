@@ -1,8 +1,9 @@
 #!/bin/bash
 set -e
 
-if ! [[ $yournumber =~ '^[0-9]+$' ]] ; then
+if ! [[ "$1" =~ '^[0-9]+$' ]] ; then
 	sendComment "Syntax Error: first arg needs to be a number"
+	exit
 fi
 
 if perm "$MESSAGE_AUTHOR" 3;then
