@@ -6,7 +6,7 @@ jobs:
       steps:
          - uses: actions/checkout@v1
          - name: check scripts
-           run: shellcheck libs/* commands/* entrypoint.sh
+           run: shellcheck lib/* commands/* entrypoint.sh
 #   SonarCloud:
 #    runs-on: ubuntu-latest
 #    steps:
