@@ -13,7 +13,7 @@ if perm "$MESSAGE_AUTHOR" 3;then
 
 	first=$((len - $1))
 	last=$((len + 1))
-	
+	echo "$ids"|jq ".[$first:$last][].body">/dev/stderr	
 	ids="$(echo "$ids"|jq ".[$first:$last][].id")"	
 
 
