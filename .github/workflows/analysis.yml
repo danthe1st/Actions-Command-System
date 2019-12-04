@@ -1,4 +1,4 @@
-me: static code analysis
+name: static code analysis
 on: [push]
 jobs:
    SonarCloud:
