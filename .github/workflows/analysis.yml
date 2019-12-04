@@ -4,8 +4,7 @@ jobs:
    ShellCheck:
       runs-on: ubuntu-latest
       steps:
-         - name: install shellcheck
-           run: sudo apt-get install -y shellcheck
+         - uses: actions/checkout@v1
          - name: check scripts
            run: shellcheck libs/* commands/* entrypoint.sh
 #   SonarCloud:
