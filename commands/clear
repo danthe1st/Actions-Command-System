@@ -17,7 +17,7 @@ if perm "$MESSAGE_AUTHOR" 3;then
 	ids="$(echo "$ids"|jq ".[$first:$last][].id")"	
 
 
-	echo "$ids" | while read id; do 
+	echo "$ids" | while read -r id; do 
 		comment "" "DELETE" "$id"
 	done
 else
