@@ -16,8 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Runs the action
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
     - uses: danthe1st/Actions-Command-System@master
       with:
         token: '${{ secrets.GITHUB_TOKEN }}'
