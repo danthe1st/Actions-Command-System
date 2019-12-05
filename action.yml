@@ -1,6 +1,6 @@
-name: 'Test Action'
+name: 'Actions Command System'
 author: 'danthe1st'
-description: 'This is a test action'
+description: 'This action allows you to enter commands by writing comments to issues and pull requests.'
 inputs:
   token:
     description: 'Gh token'
@@ -11,5 +11,5 @@ runs:
   args:
     - ${{ inputs.token }}
 branding:
-  icon: sun
-  color: blue
+  icon: terminal
+  color: red
