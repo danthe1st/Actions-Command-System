@@ -1,5 +1,8 @@
 #!/bin/bash
-
+# this command shows the permission name and permission level of a user
+# arguments:
+#   the name of the user (GitHub username)
+set -e
 user="$1"
 perm="$(perm "$user")"
 lv="$?"

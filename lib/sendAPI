@@ -1,6 +1,13 @@
 #!/bin/bash
+# sends a request to the GitHub API
+# arguments:
+#   the http method that should be used when sending the request
+#   the api path where the request should be sent to
+#   the request body that should be sent
+# Output:
+#   the response
 set -e
-BASE_URI=https://api.github.com
+BASE_URI='https://api.github.com'
 API_HEADER="Accept: application/vnd.github.v3+json"
 AUTH_HEADER="authorization: token $GITHUB_TOKEN"
 AGENT_HEADER="User-Agent: Actions-$REPO_FULLNAME"

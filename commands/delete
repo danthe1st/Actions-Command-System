@@ -1,4 +1,9 @@
 #!/bin/bash
+# this command deletes a comment from the current issue
+# arguments:
+#   the id of the comment to delete
+# required permissions:
+#   admin access on the repository
 set -e
 if perm "$MESSAGE_AUTHOR" 3;then
 	comment "" "DELETE" "$1"
