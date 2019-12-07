@@ -12,7 +12,7 @@ jobs:
         - name: checkout docs branch
           run: git checkout docs
         - name: move docs
-	  run: rm -rf * ; mv /tmp/docs/* . 
+          run: rm -rf * ; mv /tmp/docs/* . 
         - name: stage docs
           run: git add .
         - name: push
