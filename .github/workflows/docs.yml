@@ -4,16 +4,24 @@ on:
     branches: [master]
 jobs:
   docs:
-     runs-on: ubuntu-latest
-     steps:
-        - uses: actions/checkout@v1
-        - name: create documentation
-          run: ./scripts/docs.sh
-        - name: checkout docs branch
-          run: git checkout docs
-        - name: move docs
-	  run: rm -rf * ; mv /tmp/docs/* . 
-        - name: stage docs
-          run: git add .
-        - name: push
-          run: git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/danthe1st/Actions-Command-System.git 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: create documentation
+        run: ./scripts/docs.sh
+      - name: checkout docs branch
+        run: git checkout docs
+      - name: move docs
+        run: |
+          rm -rf *
+          mv /tmp/docs/* .
+      - name: check docs in
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions-bot"
+          git add . 
+          git commit -m "CI JAR deploy: `date`"||true
+      - name: push
+        run: git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/danthe1st/Actions-Command-System.git 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
