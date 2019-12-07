@@ -14,7 +14,7 @@ while read -r path; do
 				else
 					break
 				fi
-			done >> "$docPath$path.md" <<< $(tail -n +2 < "$path")
+			done >> "$docPath$path.md" <<< "$(tail -n +2 < "$path")"
 		fi
 	else
 		mkdir -p "$docPath$path"

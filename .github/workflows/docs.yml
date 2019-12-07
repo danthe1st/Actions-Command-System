@@ -12,7 +12,6 @@ jobs:
         - name: checkout docs branch
           run: git checkout docs
         - name: move docs
-          run: mv /tmp/docs/* .
 	  run: (cd /tmp/docs/ && tar c .) | (tar xf -)
         - name: stage docs
           run: git add .
