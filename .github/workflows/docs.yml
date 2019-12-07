@@ -1,0 +1,19 @@
+name: Documentation generation
+on:
+  push:
+    branches: [master]
+jobs:
+  docs:
+     runs-on: ubuntu-latest
+     steps:
+        - uses: actions/checkout@v1
+        - name: create documentation
+          run: ./scripts/docs.sh
+        - name: checkout docs branch
+          run: git checkout docs
+        - name: move docs
+          run: mv /tmp/docs/* .
+        - name: stage docs
+          run: git add .
+        - name: push
+          run: git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/danthe1st/Actions-Command-System.git 
