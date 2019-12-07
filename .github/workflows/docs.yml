@@ -12,8 +12,12 @@ jobs:
         - name: checkout docs branch
           run: git checkout docs
         - name: move docs
-          run: rm -rf * ; mv /tmp/docs/* . 
-        - name: stage docs
-          run: git add .
+          run: |
+            rm -rf *
+            mv /tmp/docs/* .
+            git add . 
+            git commit -m "CI JAR deploy: `date`"
         - name: push
           run: git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/danthe1st/Actions-Command-System.git 
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
