@@ -20,7 +20,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "github-actions-bot"
           git add . 
-          git commit -m "CI JAR deploy: `date`"||true
+          git commit -m "CI doc deploy: `date`"||true
       - name: push
         run: git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/danthe1st/Actions-Command-System.git 
         env:
