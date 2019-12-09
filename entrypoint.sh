@@ -19,10 +19,10 @@ MESSAGE_AUTHOR="$(jq -r ".comment.user.login" "$GITHUB_EVENT_PATH")"
 export MESSAGE_AUTHOR
 
 
-if perm "" issue ;then
+if commentType "" issue ;then
 	GH_EVENT_PATH=".issue"
 	API_PATH="issues"
-elif perm "" pr ;then
+elif commentType "" pr ;then
 	GH_EVENT_PATH="pull_request"
 	API_PATH="pulls"
 else #TODO commit comments
