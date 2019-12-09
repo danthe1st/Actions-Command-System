@@ -1,0 +1,41 @@
+#!/bin/bash
+# This script tests if a comment is an issue or a PR review comment
+# Arguments:
+# - The id of the issue to test (the issue of the event will be used if null)
+# - The expected type(either `pr` or `issue`, `pr` if empty)
+# exit code:
+# - 0 if the expected type matches the real type
+# - 1 if the expected type **does not** match the real type
+# - 2 if an error occured
+
+
+id="$1"
+req="$2"
+if [ -z "$1" ]; then
+	if [ "$(jq -r ".issue" "$GITHUB_EVENT_PATH")" != "null" ];then
+		type="issue"
+	elif [ "$(jq -r ".pull_request" "$GITHUB_EVENT_PATH")" != "null" ] ;then
+		type="pr"
+	else
+		echo "unsupported comment">/dev/stderr
+		exit 2
+	fi
+else
+	commentData="$( comment "" GET "$id" "" )"
+
+	if [ "$(echo "$commentData"|jq .pull_request_url)" = "null" ];then
+		type=issue
+	else
+		type=pr
+	fi
+fi
+
+if [ -z "$req" ];then
+	req="pr"
+fi
+
+if [ "$req" = "$type" ]; then
+	exit 0
+else
+	exit 1
+fi 
