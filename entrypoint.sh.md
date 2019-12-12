@@ -19,3 +19,5 @@ Arguments:
 
 - The GitHub token to be used
 
+- A list of disabled commands seperated by spaces
+
