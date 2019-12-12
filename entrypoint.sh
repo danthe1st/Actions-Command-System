@@ -19,6 +19,8 @@ export REPO_FULLNAME
 MESSAGE_AUTHOR="$(jq -r ".comment.user.login" "$GITHUB_EVENT_PATH")"
 export MESSAGE_AUTHOR
 
+echo "disabled commands: $2" >/dev/stderr
+
 for disabled in $2; do
 	if [ -x "./commands/$disabled" ]; then
 		rm "./commands/$disabled"
