@@ -24,9 +24,9 @@ else
 	commentData="$( comment "" GET "$id" "" )"
 
 	if [ "$(echo "$commentData"|jq .pull_request_url)" = "null" ];then
-		type=issue
+		type="issue"
 	else
-		type=pr
+		type="pr"
 	fi
 fi
 

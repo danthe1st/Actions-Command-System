@@ -9,6 +9,7 @@
 # - API_PATH: the path where requests to the api should be sent to
 # Arguments:
 # - The GitHub token to be used
+# - A list of disabled commands seperated by spaces
 set -e
 
 PATH="$PATH:/lib"
@@ -18,6 +19,11 @@ export REPO_FULLNAME
 MESSAGE_AUTHOR="$(jq -r ".comment.user.login" "$GITHUB_EVENT_PATH")"
 export MESSAGE_AUTHOR
 
+for disabled in $2; do
+	if [ -x "./commands/$disabled" ]; then
+		rm "./commands/$disabled"
+	fi
+done
 
 if commentType "" issue ;then
 	GH_EVENT_PATH=".issue"

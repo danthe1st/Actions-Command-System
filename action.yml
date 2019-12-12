@@ -5,11 +5,15 @@ inputs:
   token:
     description: 'Gh token'
     required: true
+  disabled:
+    description: 'a list of disabled commands, seperated by spaces'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.token }}
+    - ${{ inputs.disabled }}
 branding:
   icon: terminal
   color: red
