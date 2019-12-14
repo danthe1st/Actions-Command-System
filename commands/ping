@@ -1,0 +1,16 @@
+#!/bin/bash
+# this command pings servers and displays the delay
+# arguments:
+# - the server IP/hostname (can be multiple servers seperated by spaces, default is github)
+set -e
+function doPing(){
+	ping -c 1 "$1"|cut -d "=" -f4
+}
+if [ -z "$*" ]; then
+	sendComment "ping github.com: $(doPing github.com)"
+else
+	for arg in "$@"; do
+		sendComment "ping $arg: $(doPing "$arg")"
+	done
+fi
+
