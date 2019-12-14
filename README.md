@@ -21,6 +21,8 @@ jobs:
         token: '${{ secrets.GITHUB_TOKEN }}'
 ```
 
+If you want to disable some commands just add `disabled: '<commands seperated by spaces>'` after `token: '${{ secrets.GITHUB_TOKEN }}'`
+
 After adding this file, create an issue, write `/say Hi!` in a comment there and wait a minute.
 
 You should get response containing `Hi!`.
