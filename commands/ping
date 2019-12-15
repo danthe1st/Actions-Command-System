@@ -3,16 +3,14 @@
 # arguments:
 # - the server IP/hostname (can be multiple servers seperated by spaces, default is github)
 set -e
-function doPing(){
+function getLatency(){
 	ping -c 1 "$1"|cut -d$'\n' -f2|cut -d "=" -f4
 }
 if [ -z "$*" ]; then
-	sendComment "ping github.com: $(doPing github.com)"
-	echo "$(doPing github.com)" >/dev/stderr
+	sendComment "ping github.com: $(getLatency github.com)"
 else
 	for arg in "$@"; do
-		sendComment "ping $arg: $(doPing "$arg")"
-		echo "$(doPing "$arg")" >/dev/stderr
+		sendComment "ping $arg: $(getLatency "$arg")"
 	done
 fi
 
