@@ -8,9 +8,11 @@ function doPing(){
 }
 if [ -z "$*" ]; then
 	sendComment "ping github.com: $(doPing github.com)"
+	echo "$(doPing github.com)" >/dev/stderr
 else
 	for arg in "$@"; do
 		sendComment "ping $arg: $(doPing "$arg")"
+		echo "$(doPing "$arg")" >/dev/stderr
 	done
 fi
 
