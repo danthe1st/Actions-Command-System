@@ -59,9 +59,7 @@ if [[ $text == ${prefix}* ]]; then
   text="${text:$prefixLen}" || ( echo "err stripping prefix" &&exit $?)
   cmdName="$(echo "$text" | cut -d' ' -f1)" || ( echo "err getting name" && exit $?)
   cmdName=${cmdName//\//"\\\\/"}
-  echo "cmd test: $text" > /dev/stderr
-  args="$(echo "$text" | cut -d' ' -f2-)"|| ( echo "err getting args" && exit $?)
-  echo "cmd args: $args" > /dev/stderr
+  args="$(echo "$text" | cut -s -d' ' -f2-)"|| ( echo "err getting args" && exit $?)
   echo "executing command $cmdName with arguments $args" >/dev/stderr
   if [ -x "/commands/$cmdName" ]; then
 	( bash -c "/commands/$cmdName $args" && echo "executed command successfully" >/dev/stderr ) || ( code=$?; echo "command errored with exit code $code" >/dev/stderr && exit $code )
