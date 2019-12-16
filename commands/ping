@@ -10,7 +10,9 @@ function getLatency(){
 echo "all args: $*"
 if [ -z "$*" ]; then
 	echo "ping GH"
-	sendComment "ping github.com: $(getLatency github.com)"
+	text="ping github.com: $(getLatency github.com)"
+	echo "$text"
+	sendComment "$text"
 else
 	for arg in "$@"; do
 		echo "ping $arg"
