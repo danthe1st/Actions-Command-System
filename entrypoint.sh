@@ -59,7 +59,7 @@ if [[ $text == ${prefix}* ]]; then
   text="${text:$prefixLen}" || ( echo "err stripping prefix" &&exit $?)
   cmdName="$(echo "$text" | cut -d' ' -f1)" || ( echo "err getting name" && exit $?)
   cmdName=${cmdName//\//"\\\\/"}
-  #cmdName="$(echo "$cmdName" | sed 's/[^a-zA-Z0-9]//g')" || ( echo "err stripping name" && exit $? )
+  echo "$text" > /dev/stderr
   args="$(echo "$text" | cut -d' ' -f2-)"|| ( echo "err getting args" && exit $?)
   echo "executing command $cmdName with arguments $args" >/dev/stderr
   if [ -x "/commands/$cmdName" ]; then
