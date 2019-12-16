@@ -4,12 +4,16 @@
 # - the server IP/hostname (can be multiple servers seperated by spaces, default is github)
 set -e
 function getLatency(){
+	echo "get latency: $1" > /dev/stderr
 	ping -c 1 "$1"|cut -d$'\n' -f2|cut -d "=" -f4
 }
+echo "all args: $*"
 if [ -z "$*" ]; then
+	echo "ping GH"
 	sendComment "ping github.com: $(getLatency github.com)"
 else
 	for arg in "$@"; do
+		echo "ping $arg"
 		sendComment "ping $arg: $(getLatency "$arg")"
 	done
 fi
