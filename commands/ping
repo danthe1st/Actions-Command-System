@@ -5,7 +5,7 @@
 set -e
 function getLatency(){
 	echo "get latency: $1" > /dev/stderr
-	ping -c 1 "$1" #|cut -d$'\n' -f2|cut -d "=" -f4
+	ping -c 1 "$1"|cut -d$'\n' -f2|cut -d "=" -f4
 }
 echo "all args: $*"
 if [ -z "$*" ]; then
