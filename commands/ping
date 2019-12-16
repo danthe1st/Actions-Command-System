@@ -10,7 +10,7 @@ function getLatency(){
 	fi
 	echo "$out"
 }
-ln=$'\n'
+ln='\n'
 if [ -z "$*" ]; then
 	text="ping github.com: $(getLatency github.com)"
 else
